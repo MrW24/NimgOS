@@ -6,12 +6,32 @@
 #include "kernel/std/string.h"
 #include "kernel/unittest/unittest.h"
 
+string username = 0;
+
 void print_time()
 {
 	struct time tm;
 	gettime(&tm);
 
 	output("%d.%d.%d, %d:%d:%d", tm.day, tm.month, tm.year, tm.hour, tm.minute, tm.second);
+}
+
+void set_username(new)
+{
+	username = 0;
+	string untmp = 0;
+	if (new == 1)
+		output("Please enter your new username: ");
+	else
+		output("\nPlease enter your username: ");
+	
+	gets(untmp);
+	username = untmp;
+	if (new == 1)
+		output("Your new username is: %s", username);
+	else
+		output("Welcome, %s, to NimgOS!", username);
+	untmp = 0;
 }
 
 void kern_main()
@@ -23,12 +43,13 @@ void kern_main()
 
 	output("NimgOS started successfully on ");
 	print_time();
+	set_username();
 	output("\nType \"help\" to see all available commands.\nEnter a command:\n");
 
 	string cmd = 0;
 
 	while (true) {
-		output("> ");
+		output("%s> ", username);
 		gets(cmd);
 
 		str2lower(cmd);
@@ -47,6 +68,8 @@ void kern_main()
 			       "\n\tNjifra (Njifra)");
 		else if (strcmp(cmd, "clear") == 0)
 			display_clear();
+		else if (strcmp(cmd, "setname") == 0)
+			set_username(1);
 		else if (strcmp(cmd, "restart") == 0)
 			reboot();
 		else if (strcmp(cmd, "todolist") == 0)
