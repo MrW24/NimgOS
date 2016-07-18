@@ -14,6 +14,17 @@ void print_time()
 	output("%d.%d.%d, %d:%d:%d", tm.day, tm.month, tm.year, tm.hour, tm.minute, tm.second);
 }
 
+void HG()
+{
+	string text = 0;
+	output("Input: ");
+	gets(text);
+	str2upper(text);
+
+	output("Output: ");
+	output(text);
+}
+
 void kern_main()
 {
 	gdt_init();
@@ -47,6 +58,8 @@ void kern_main()
 			       "\n\tNjifra (Njifra)");
 		else if (strcmp(cmd, "clear") == 0)
 			display_clear();
+		else if (strcmp(cmd, "hg") == 0)
+			HG();
 		else if (strcmp(cmd, "restart") == 0)
 			reboot();
 		else if (strcmp(cmd, "todolist") == 0)
