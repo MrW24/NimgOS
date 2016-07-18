@@ -6,6 +6,8 @@
 #include "kernel/std/string.h"
 #include "kernel/unittest/unittest.h"
 
+string text; // the text variable is now public
+
 void print_time()
 {
 	struct time tm;
@@ -16,7 +18,6 @@ void print_time()
 
 void HG()
 {
-	string text = 0;
 	output("Input: ");
 	gets(text);
 	str2upper(text);
@@ -72,7 +73,8 @@ void kern_main()
 		}
 		else
 			write_string("Command not found.");
-
+		
+		output("\nCurrent state of the text variable: %s", text); // the text variable used by the HG command is printed everytime
 		output("\n");
 
 		cmd = 0;
