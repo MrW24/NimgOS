@@ -16,22 +16,21 @@ void print_time()
 	output("%d.%d.%d, %d:%d:%d", tm.day, tm.month, tm.year, tm.hour, tm.minute, tm.second);
 }
 
-void set_username(new)
+void set_username(int isNew)
 {
 	username = 0;
-	string untmp = 0;
-	if (new == 1)
+	
+	if (isNew == 1)
 		output("Please enter your new username: ");
 	else
 		output("\nPlease enter your username: ");
 	
-	gets(untmp);
-	username = untmp;
-	if (new == 1)
+	gets(username);
+	
+	if (isNew == 1)
 		output("Your new username is: %s", username);
 	else
 		output("Welcome, %s, to NimgOS!", username);
-	untmp = 0;
 }
 
 void kern_main()
@@ -43,7 +42,7 @@ void kern_main()
 
 	output("NimgOS started successfully on ");
 	print_time();
-	set_username();
+	set_username(0);
 	output("\nType \"help\" to see all available commands.\nEnter a command:\n");
 
 	string cmd = 0;
@@ -74,8 +73,6 @@ void kern_main()
 			reboot();
 		else if (strcmp(cmd, "todolist") == 0)
 			output("TODO list:\n\t- fix non-removable CTRL+C\n\t- add scrolling\n\t- add a command manager (no hardcoded commands, please)");
-		else if (strcmp(cmd, "setcur") == 0)
-			display_set_cursor(10, 10);
 		else if (strcmp(cmd, "time") == 0) {
 			output("Current time: ");
 			print_time();
