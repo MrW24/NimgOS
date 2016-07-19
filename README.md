@@ -1,7 +1,7 @@
 # ![NimgOS](http://puu.sh/pZokD/0c4a83186e.jpg)
 An operating system developed by people at the IRC server irc.rizon.net - channel #nimg_lobby
 
-__IMPORTANT NOTE: This branch contains unstable/buggy code that may cause unexpected side effects. USE IT ONLY AT YOUR OWN RISK!__
+__WARNING: This branch contains unstable/buggy code that may cause unexpected side effects. USE IT ONLY AT YOUR OWN RISK!__
 
 The NimgOS developers __are not responsible__ for any damages that may be caused by the use of this code.
 
